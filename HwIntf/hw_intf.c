@@ -3,7 +3,7 @@
 #include "spi.h"
 #include "tim.h"
 
-#include "hw_intf.h"
+#include "OpenDrone_Transmitter_HwIntf.h"
 #include "hd44780.h"
 #include "joystick.h"
 

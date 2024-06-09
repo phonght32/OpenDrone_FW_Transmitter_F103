@@ -27,10 +27,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "string.h"
-#include "hw_intf.h"
-#include "periph_operator.h"
-#include "periph_radio.h"
-#include "periph_screen.h"
+#include "OpenDrone_Transmitter_HwIntf.h"
+#include "Periph.h"
 #include "OpenDrone_TxProto.h"
 /* USER CODE END Includes */
 /* Private typedef -----------------------------------------------------------*/
@@ -100,9 +98,9 @@ int main(void)
     MX_ADC2_Init();
     /* USER CODE BEGIN 2 */
     app_init_message();
-    periph_operator_init();
-    periph_radio_init();
-    periph_screen_init();
+    PeriphSensor_Init();
+    PeriphRadio_Init();
+    PeriphDisplay_Init();
     /* USER CODE END 2 */
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
@@ -113,7 +111,7 @@ int main(void)
         /* Task 500 Hz */
         if ((current_time - last_time_us[IDX_TASK_500_HZ]) > FREQ_500_HZ_TIME_US)
         {
-            periph_radio_clear_transmit_irq_flags();
+        	PeriphRadio_ClearTransmitIrqFlags();
 
             last_time_us[IDX_TASK_500_HZ] = current_time;
         }
@@ -121,7 +119,7 @@ int main(void)
         /* Task 50 Hz */
         if ((current_time - last_time_us[IDX_TASK_50_HZ]) > FREQ_50_HZ_TIME_US)
         {
-            periph_operator_get_joystick_scale(&periph_operator_data);
+        	PeriphSensor_GetJoystickScale(&periph_operator_data);
 
             app_prepare_message_control();
             app_send_message_control();
@@ -138,7 +136,7 @@ int main(void)
         /* Task 5 Hz */
         if ((current_time - last_time_us[IDX_TASK_5_HZ]) > FREQ_5_HZ_TIME_US)
         {
-            periph_screen_show_stabilizer_message(OpenDrone_TxProto_Msg_StabilizerCtrl.throttle,
+        	PeriphDisplay_ShowStabilizerMessage(OpenDrone_TxProto_Msg_StabilizerCtrl.throttle,
                                                   OpenDrone_TxProto_Msg_StabilizerCtrl.roll,
                                                   OpenDrone_TxProto_Msg_StabilizerCtrl.pitch,
                                                   OpenDrone_TxProto_Msg_StabilizerCtrl.yaw);
@@ -221,7 +219,7 @@ err_code_t app_prepare_message_control(void)
 
 err_code_t app_send_message_control(void)
 {
-    periph_radio_send((uint8_t *)&OpenDrone_TxProto_Msg);
+	PeriphRadio_Send((uint8_t *)&OpenDrone_TxProto_Msg);
 
     return ERR_CODE_SUCCESS;
 }
