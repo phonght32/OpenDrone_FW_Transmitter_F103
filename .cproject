@@ -46,15 +46,15 @@
 									<listOptionValue builtIn="false" value="../Drivers/STM32F1xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32F1xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/Display/hd44780}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/HwIntf}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/Peripheral}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/Radio/nrf24l01}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/Radio/sx1278}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/Sensor/joystick}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/TxProtocol/OpenDrone_TxProtocol}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/Portable/mcu_port}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/HwIntf}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_Transmitter_FW/Peripheral}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1853599625" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
