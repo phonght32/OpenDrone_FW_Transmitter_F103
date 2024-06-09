@@ -26,49 +26,23 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "string.h"
-#include "OpenDrone_Transmitter_HwIntf.h"
-#include "Periph.h"
-#include "OpenDrone_TxProto.h"
+#include "OpenDrone_Transmitter.h"
 /* USER CODE END Includes */
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 /* USER CODE END PTD */
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define FREQ_HZ_TO_TIME_US(x)       (1000000.0f/(x))
-#define TIME_US_TO_FREQ_HZ(x)       (1000000.0f/(x))
-
-#define IDX_TASK_500_HZ             0
-#define IDX_TASK_50_HZ              1
-#define IDX_TASK_30_HZ              2
-#define IDX_TASK_10_HZ              3
-#define IDX_TASK_5_HZ               4
-#define NUM_OF_TASK                 5
-
-#define FREQ_500_HZ_TIME_US         FREQ_HZ_TO_TIME_US(500)
-#define FREQ_50_HZ_TIME_US          FREQ_HZ_TO_TIME_US(50)
-#define FREQ_30_HZ_TIME_US          FREQ_HZ_TO_TIME_US(30)
-#define FREQ_10_HZ_TIME_US          FREQ_HZ_TO_TIME_US(10)
-#define FREQ_5_HZ_TIME_US           FREQ_HZ_TO_TIME_US(5)
 /* USER CODE END PD */
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 /* USER CODE END PM */
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-uint32_t last_time_us[NUM_OF_TASK] = {0};
-periph_operator_data_t periph_operator_data = {0};
-OpenDrone_TxProto_Msg_t OpenDrone_TxProto_Msg = {0};
-OpenDrone_TxProto_Msg_OprCtrl_t OpenDrone_TxProto_Msg_OprCtrl = {0};
-OpenDrone_TxProto_Msg_StabilizerCtrl_t OpenDrone_TxProto_Msg_StabilizerCtrl = {0};
 /* USER CODE END PV */
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-err_code_t app_init_message(void);
-err_code_t app_prepare_message_control(void);
-err_code_t app_send_message_control(void);
 /* USER CODE END PFP */
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
@@ -97,52 +71,13 @@ int main(void)
     MX_TIM2_Init();
     MX_ADC2_Init();
     /* USER CODE BEGIN 2 */
-    app_init_message();
-    PeriphSensor_Init();
-    PeriphRadio_Init();
-    PeriphDisplay_Init();
+    OpenDrone_Transmitter_Init();
     /* USER CODE END 2 */
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1)
     {
-        uint32_t current_time = hw_intf_get_time_us();
-
-        /* Task 500 Hz */
-        if ((current_time - last_time_us[IDX_TASK_500_HZ]) > FREQ_500_HZ_TIME_US)
-        {
-        	PeriphRadio_ClearTransmitIrqFlags();
-
-            last_time_us[IDX_TASK_500_HZ] = current_time;
-        }
-
-        /* Task 50 Hz */
-        if ((current_time - last_time_us[IDX_TASK_50_HZ]) > FREQ_50_HZ_TIME_US)
-        {
-        	PeriphSensor_GetJoystickScale(&periph_operator_data);
-
-            app_prepare_message_control();
-            app_send_message_control();
-
-            last_time_us[IDX_TASK_50_HZ] = current_time;
-        }
-
-        /* Task 30 Hz */
-        if ((current_time - last_time_us[IDX_TASK_30_HZ]) > FREQ_30_HZ_TIME_US)
-        {
-            last_time_us[IDX_TASK_30_HZ] = current_time;
-        }
-
-        /* Task 5 Hz */
-        if ((current_time - last_time_us[IDX_TASK_5_HZ]) > FREQ_5_HZ_TIME_US)
-        {
-        	PeriphDisplay_ShowStabilizerMessage(OpenDrone_TxProto_Msg_StabilizerCtrl.throttle,
-                                                  OpenDrone_TxProto_Msg_StabilizerCtrl.roll,
-                                                  OpenDrone_TxProto_Msg_StabilizerCtrl.pitch,
-                                                  OpenDrone_TxProto_Msg_StabilizerCtrl.yaw);
-
-            last_time_us[IDX_TASK_5_HZ] = current_time;
-        }
+        OpenDrone_Transmitter_Main();
         /* USER CODE END WHILE */
         /* USER CODE BEGIN 3 */
     }
@@ -191,38 +126,6 @@ void SystemClock_Config(void)
     }
 }
 /* USER CODE BEGIN 4 */
-err_code_t app_init_message(void)
-{
-    OpenDrone_TxProto_Msg.StartInd = 0xAA;
-    OpenDrone_TxProto_Msg.PktLen = 8;
-    OpenDrone_TxProto_Msg.PktSeq = 0x80;
-    OpenDrone_TxProto_Msg.SrcId = 0x40;
-    OpenDrone_TxProto_Msg.DesId = 0x41;
-    OpenDrone_TxProto_Msg.MsgId = OPENDRONE_TXPROTO_MSG_ID_STABILIZER_CONTROL;
-    OpenDrone_TxProto_Msg.Crc = 0x00;
-    memset(&OpenDrone_TxProto_Msg.Payload, 0x00, sizeof(OpenDrone_TxProto_Payload_t));
-
-    return ERR_CODE_SUCCESS;
-}
-
-err_code_t app_prepare_message_control(void)
-{
-    OpenDrone_TxProto_Msg_StabilizerCtrl.throttle = periph_operator_data.left_joystick_y;
-    OpenDrone_TxProto_Msg_StabilizerCtrl.roll = periph_operator_data.right_joystick_x;
-    OpenDrone_TxProto_Msg_StabilizerCtrl.pitch = periph_operator_data.right_joystick_y;
-    OpenDrone_TxProto_Msg_StabilizerCtrl.yaw = periph_operator_data.left_joystick_x;
-
-    OpenDrone_TxProto_Msg.Payload = (OpenDrone_TxProto_Payload_t)OpenDrone_TxProto_Msg_StabilizerCtrl;
-
-    return ERR_CODE_SUCCESS;
-}
-
-err_code_t app_send_message_control(void)
-{
-	PeriphRadio_Send((uint8_t *)&OpenDrone_TxProto_Msg);
-
-    return ERR_CODE_SUCCESS;
-}
 /* USER CODE END 4 */
 /**
   * @brief  This function is executed in case of error occurrence.
