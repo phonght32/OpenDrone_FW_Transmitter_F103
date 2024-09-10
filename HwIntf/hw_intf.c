@@ -32,7 +32,7 @@
 #endif
 
 #ifdef USE_NRF24L01
-#define NRF24L01_SPI                 	hspi1
+#define NRF24L01_SPI                 	hspi2
 #define NRF24L01_GPIO_PORT_CS         	GPIOA
 #define NRF24L01_GPIO_PIN_CS      		GPIO_PIN_11
 #define NRF24L01_GPIO_PORT_CE         	GPIOA
@@ -42,7 +42,7 @@
 #endif
 
 #ifdef USE_SX1278
-#define SX1278_SPI                 		hspi1
+#define SX1278_SPI                 		hspi2
 #define SX1278_GPIO_PORT_CS         	GPIOA
 #define SX1278_GPIO_PIN_CS      		GPIO_PIN_11
 #define SX1278_GPIO_PORT_RST         	GPIOA
