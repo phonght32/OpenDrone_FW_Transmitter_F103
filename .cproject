@@ -49,7 +49,6 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/Portable/mcu_port}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/HwIntf}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Peripheral}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Display}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Display/Driver/hd44780}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Radio}&quot;"/>
@@ -58,6 +57,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Radio/TxProtocol/OpenDrone_TxProtocol}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Joystick}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Joystick/Driver/joystick}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Switch}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1853599625" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
