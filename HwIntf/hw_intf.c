@@ -5,6 +5,9 @@
 
 #include "hd44780.h"
 #include "joystick.h"
+#include "nrf24l01.h"
+
+#include "err_code.h"
 
 #include "OpenDrone_Transmitter_Config.h"
 
@@ -63,16 +66,16 @@ void hwif_delay_ms(uint32_t time_ms)
 }
 
 #ifdef USE_HD44780_2004
-err_code_t hwif_hd44780_i2c_send(uint8_t *buf_send, uint16_t len)
+hd44780_status_t hwif_hd44780_i2c_send(uint8_t *buf_send, uint16_t len)
 {
 	HAL_I2C_Master_Transmit(&HD44780_I2C_HANDLE, I2C_ADDR_HD44780, buf_send, len, 100);
 
-	return ERR_CODE_SUCCESS;
+	return HD44780_STATUS_SUCCESS;
 }
 #endif
 
 #ifdef USE_JOYSTICK_MODULE
-err_code_t hwif_left_joystick_get_pos_x(uint16_t *pos_x)
+joystick_status_t hwif_left_joystick_get_pos_x(uint16_t *pos_x)
 {
 	ADC_ChannelConfTypeDef sConfig = {0};
 
@@ -89,10 +92,10 @@ err_code_t hwif_left_joystick_get_pos_x(uint16_t *pos_x)
 	*pos_x = HAL_ADC_GetValue(&LEFT_JOYSTICK_ADC);
 	HAL_ADC_Stop(&LEFT_JOYSTICK_ADC);
 
-	return ERR_CODE_SUCCESS;
+	return JOYSTICK_STATUS_SUCCESS;
 }
 
-err_code_t hwif_left_joystick_get_pos_y(uint16_t *pos_y)
+joystick_status_t hwif_left_joystick_get_pos_y(uint16_t *pos_y)
 {
 	ADC_ChannelConfTypeDef sConfig = {0};
 
@@ -109,17 +112,17 @@ err_code_t hwif_left_joystick_get_pos_y(uint16_t *pos_y)
 	*pos_y = HAL_ADC_GetValue(&LEFT_JOYSTICK_ADC);
 	HAL_ADC_Stop(&LEFT_JOYSTICK_ADC);
 
-	return ERR_CODE_SUCCESS;
+	return JOYSTICK_STATUS_SUCCESS;
 }
 
-err_code_t hwif_left_joystick_get_bt_status(uint8_t *bt_status)
+joystick_status_t hwif_left_joystick_get_bt_status(uint8_t *bt_status)
 {
 	*bt_status = HAL_GPIO_ReadPin(LEFT_JOYSTICK_BUTTON_PORT, LEFT_JOYSTICK_BUTTON_PIN);
 
-	return ERR_CODE_SUCCESS;
+	return JOYSTICK_STATUS_SUCCESS;
 }
 
-err_code_t hwif_right_joystick_get_pos_x(uint16_t *pos_x)
+joystick_status_t hwif_right_joystick_get_pos_x(uint16_t *pos_x)
 {
 	ADC_ChannelConfTypeDef sConfig = {0};
 
@@ -136,10 +139,10 @@ err_code_t hwif_right_joystick_get_pos_x(uint16_t *pos_x)
 	*pos_x = HAL_ADC_GetValue(&RIGHT_JOYSTICK_ADC);
 	HAL_ADC_Stop(&RIGHT_JOYSTICK_ADC);
 
-	return ERR_CODE_SUCCESS;
+	return JOYSTICK_STATUS_SUCCESS;
 }
 
-err_code_t hwif_right_joystick_get_pos_y(uint16_t *pos_y)
+joystick_status_t hwif_right_joystick_get_pos_y(uint16_t *pos_y)
 {
 	ADC_ChannelConfTypeDef sConfig = {0};
 
@@ -156,51 +159,51 @@ err_code_t hwif_right_joystick_get_pos_y(uint16_t *pos_y)
 	*pos_y = HAL_ADC_GetValue(&RIGHT_JOYSTICK_ADC);
 	HAL_ADC_Stop(&RIGHT_JOYSTICK_ADC);
 
-	return ERR_CODE_SUCCESS;
+	return JOYSTICK_STATUS_SUCCESS;
 }
 
-err_code_t hwif_right_joystick_get_bt_status(uint8_t *bt_status)
+joystick_status_t hwif_right_joystick_get_bt_status(uint8_t *bt_status)
 {
 	*bt_status = HAL_GPIO_ReadPin(RIGHT_JOYSTICK_BUTTON_PORT, RIGHT_JOYSTICK_BUTTON_PIN);
 
-	return ERR_CODE_SUCCESS;
+	return JOYSTICK_STATUS_SUCCESS;
 }
 #endif
 
 #ifdef USE_NRF24L01
-err_code_t hwif_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len)
+nrf24l01_status_t hwif_nrf24l01_spi_send(uint8_t *buf_send, uint16_t len)
 {
 	HAL_SPI_Transmit(&NRF24L01_SPI, buf_send, len, 100);
 
-	return ERR_CODE_SUCCESS;
+	return NRF24L01_STATUS_SUCCESS;
 }
 
-err_code_t hwif_nrf24l01_spi_recv(uint8_t *buf_recv, uint16_t len)
+nrf24l01_status_t hwif_nrf24l01_spi_recv(uint8_t *buf_recv, uint16_t len)
 {
 	HAL_SPI_Receive(&NRF24L01_SPI, buf_recv, len, 100);
 
-	return ERR_CODE_SUCCESS;
+	return NRF24L01_STATUS_SUCCESS;
 }
 
-err_code_t hwif_nrf24l01_set_cs(uint8_t level)
+nrf24l01_status_t hwif_nrf24l01_set_cs(uint8_t level)
 {
 	HAL_GPIO_WritePin(NRF24L01_GPIO_PORT_CS, NRF24L01_GPIO_PIN_CS, level);
 
-	return ERR_CODE_SUCCESS;
+	return NRF24L01_STATUS_SUCCESS;
 }
 
-err_code_t hwif_nrf24l01_set_ce(uint8_t level)
+nrf24l01_status_t hwif_nrf24l01_set_ce(uint8_t level)
 {
 	HAL_GPIO_WritePin(NRF24L01_GPIO_PORT_CE, NRF24L01_GPIO_PIN_CE, level);
 
-	return ERR_CODE_SUCCESS;
+	return NRF24L01_STATUS_SUCCESS;
 }
 
-err_code_t hwif_nrf24l01_get_irq(uint8_t *level)
+nrf24l01_status_t hwif_nrf24l01_get_irq(uint8_t *level)
 {
 	*level = HAL_GPIO_ReadPin(NRF24L01_GPIO_PORT_IRQ, NRF24L01_GPIO_PIN_IRQ);
 
-	return ERR_CODE_SUCCESS;
+	return NRF24L01_STATUS_SUCCESS;
 }
 #endif
 
