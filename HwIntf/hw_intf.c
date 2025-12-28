@@ -7,8 +7,6 @@
 #include "joystick.h"
 #include "nrf24l01.h"
 
-#include "err_code.h"
-
 #include "OpenDrone_Transmitter_Config.h"
 
 #define APP_TIM 						htim2
