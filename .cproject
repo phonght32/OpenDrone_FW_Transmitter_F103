@@ -47,8 +47,8 @@
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32F1xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/Portable/mcu_port}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Config}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/HwIntf}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Display}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Display/Driver/hd44780}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Radio}&quot;"/>
