@@ -6,6 +6,7 @@
 #include "hd44780.h"
 #include "joystick.h"
 #include "nrf24l01.h"
+#include "sx1278.h"
 
 #include "OpenDrone_Transmitter_Config.h"
 
@@ -206,35 +207,35 @@ nrf24l01_status_t hwif_nrf24l01_get_irq(uint8_t *level)
 #endif
 
 #ifdef USE_SX1278
-err_code_t hwif_sx1278_spi_send(uint8_t *buf_send, uint16_t len)
+sx1278_status_t hwif_sx1278_spi_send(uint8_t *buf_send, uint16_t len)
 {
 	HAL_SPI_Transmit(&SX1278_SPI, buf_send, len, 100);
 
 	return ERR_CODE_SUCCESS;
 }
 
-err_code_t hwif_sx1278_spi_recv(uint8_t *buf_recv, uint16_t len)
+sx1278_status_t hwif_sx1278_spi_recv(uint8_t *buf_recv, uint16_t len)
 {
 	HAL_SPI_Receive(&SX1278_SPI, buf_recv, len, 100);
 
 	return ERR_CODE_SUCCESS;
 }
 
-err_code_t hwif_sx1278_set_cs(uint8_t level)
+sx1278_status_t hwif_sx1278_set_cs(uint8_t level)
 {
 	HAL_GPIO_WritePin(SX1278_GPIO_PORT_CS, SX1278_GPIO_PIN_CS, level);
 
 	return ERR_CODE_SUCCESS;
 }
 
-err_code_t hwif_sx1278_set_rst(uint8_t level)
+sx1278_status_t hwif_sx1278_set_rst(uint8_t level)
 {
 	HAL_GPIO_WritePin(SX1278_GPIO_PORT_RST, SX1278_GPIO_PIN_RST, level);
 
 	return ERR_CODE_SUCCESS;
 }
 
-err_code_t hwif_sx1278_get_irq(uint8_t *level)
+sx1278_status_t hwif_sx1278_get_irq(uint8_t *level)
 {
 	*level = HAL_GPIO_ReadPin(SX1278_GPIO_PORT_IRQ, SX1278_GPIO_PIN_IRQ);
 
