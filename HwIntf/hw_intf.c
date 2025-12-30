@@ -7,6 +7,7 @@
 #include "joystick.h"
 #include "nrf24l01.h"
 #include "sx1278.h"
+#include "PeriphSwitch.h"
 
 #include "OpenDrone_Transmitter_Config.h"
 
@@ -53,6 +54,33 @@
 #define SX1278_GPIO_PORT_IRQ            GPIOA
 #define SX1278_GPIO_PIN_IRQ         	GPIO_PIN_10
 #endif
+
+#define SWITCH1_GPIO_PORT 				GPIOB
+#define SWITCH1_GPIO_PIN 				GPIO_PIN_10
+
+#define SWITCH2_GPIO_PORT 				GPIOB
+#define SWITCH2_GPIO_PIN 				GPIO_PIN_12
+
+#define SWITCH3_GPIO_PORT 				GPIOB
+#define SWITCH3_GPIO_PIN 				GPIO_PIN_2
+
+#define SWITCH4_GPIO_PORT 				GPIOB
+#define SWITCH4_GPIO_PIN 				GPIO_PIN_1
+
+
+
+
+#define SWITCH5_GPIO_PORT 				GPIOB
+#define SWITCH5_GPIO_PIN 				GPIO_PIN_5
+
+#define SWITCH6_GPIO_PORT 				GPIOB
+#define SWITCH6_GPIO_PIN 				GPIO_PIN_4
+
+#define SWITCH7_GPIO_PORT 				GPIOC
+#define SWITCH7_GPIO_PIN 				GPIO_PIN_13
+
+#define SWITCH8_GPIO_PORT 				GPIOB
+#define SWITCH8_GPIO_PIN 				GPIO_PIN_3
 
 uint32_t hwif_get_time_us(void)
 {
@@ -242,3 +270,147 @@ sx1278_status_t hwif_sx1278_get_irq(uint8_t *level)
 	return ERR_CODE_SUCCESS;
 }
 #endif
+
+PeriphSwitch_State_t hwif_switch1_get_state(void)
+{
+	uint8_t level = 0;
+	PeriphSwitch_State_t switch_state = PERIPH_SWITCH_STATE_OFF;
+
+	level = HAL_GPIO_ReadPin(SWITCH1_GPIO_PORT, SWITCH1_GPIO_PIN);
+	if (level == 0)
+	{
+		switch_state = PERIPH_SWITCH_STATE_ON;
+	}
+	else
+	{
+		switch_state = PERIPH_SWITCH_STATE_OFF;
+	}
+
+	return switch_state;
+}
+
+PeriphSwitch_State_t hwif_switch2_get_state(void)
+{
+	uint8_t level = 0;
+	PeriphSwitch_State_t switch_state = PERIPH_SWITCH_STATE_OFF;
+
+	level = HAL_GPIO_ReadPin(SWITCH2_GPIO_PORT, SWITCH2_GPIO_PIN);
+	if (level == 0)
+	{
+		switch_state = PERIPH_SWITCH_STATE_ON;
+	}
+	else
+	{
+		switch_state = PERIPH_SWITCH_STATE_OFF;
+	}
+
+	return switch_state;
+}
+
+PeriphSwitch_State_t hwif_switch3_get_state(void)
+{
+	uint8_t level = 0;
+	PeriphSwitch_State_t switch_state = PERIPH_SWITCH_STATE_OFF;
+
+	level = HAL_GPIO_ReadPin(SWITCH3_GPIO_PORT, SWITCH3_GPIO_PIN);
+	if (level == 0)
+	{
+		switch_state = PERIPH_SWITCH_STATE_ON;
+	}
+	else
+	{
+		switch_state = PERIPH_SWITCH_STATE_OFF;
+	}
+
+	return switch_state;
+}
+
+PeriphSwitch_State_t hwif_switch4_get_state(void)
+{
+	uint8_t level = 0;
+	PeriphSwitch_State_t switch_state = PERIPH_SWITCH_STATE_OFF;
+
+	level = HAL_GPIO_ReadPin(SWITCH4_GPIO_PORT, SWITCH4_GPIO_PIN);
+	if (level == 0)
+	{
+		switch_state = PERIPH_SWITCH_STATE_ON;
+	}
+	else
+	{
+		switch_state = PERIPH_SWITCH_STATE_OFF;
+	}
+
+	return switch_state;
+}
+
+PeriphSwitch_State_t hwif_switch5_get_state(void)
+{
+	uint8_t level = 0;
+	PeriphSwitch_State_t switch_state = PERIPH_SWITCH_STATE_OFF;
+
+	level = HAL_GPIO_ReadPin(SWITCH5_GPIO_PORT, SWITCH5_GPIO_PIN);
+	if (level == 0)
+	{
+		switch_state = PERIPH_SWITCH_STATE_ON;
+	}
+	else
+	{
+		switch_state = PERIPH_SWITCH_STATE_OFF;
+	}
+
+	return switch_state;
+}
+
+PeriphSwitch_State_t hwif_switch6_get_state(void)
+{
+	uint8_t level = 0;
+	PeriphSwitch_State_t switch_state = PERIPH_SWITCH_STATE_OFF;
+
+	level = HAL_GPIO_ReadPin(SWITCH6_GPIO_PORT, SWITCH6_GPIO_PIN);
+	if (level == 0)
+	{
+		switch_state = PERIPH_SWITCH_STATE_ON;
+	}
+	else
+	{
+		switch_state = PERIPH_SWITCH_STATE_OFF;
+	}
+
+	return switch_state;
+}
+
+PeriphSwitch_State_t hwif_switch7_get_state(void)
+{
+	uint8_t level = 0;
+	PeriphSwitch_State_t switch_state = PERIPH_SWITCH_STATE_OFF;
+
+	level = HAL_GPIO_ReadPin(SWITCH7_GPIO_PORT, SWITCH7_GPIO_PIN);
+	if (level == 0)
+	{
+		switch_state = PERIPH_SWITCH_STATE_ON;
+	}
+	else
+	{
+		switch_state = PERIPH_SWITCH_STATE_OFF;
+	}
+
+	return switch_state;
+}
+
+PeriphSwitch_State_t hwif_switch8_get_state(void)
+{
+	uint8_t level = 0;
+	PeriphSwitch_State_t switch_state = PERIPH_SWITCH_STATE_OFF;
+
+	level = HAL_GPIO_ReadPin(SWITCH8_GPIO_PORT, SWITCH8_GPIO_PIN);
+	if (level == 0)
+	{
+		switch_state = PERIPH_SWITCH_STATE_ON;
+	}
+	else
+	{
+		switch_state = PERIPH_SWITCH_STATE_OFF;
+	}
+
+	return switch_state;
+}
