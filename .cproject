@@ -46,18 +46,18 @@
 									<listOptionValue builtIn="false" value="../Drivers/STM32F1xx_HAL_Driver/Inc"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32F1xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/Portable/mcu_port}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Config}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Display}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Display/Driver/hd44780}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Radio}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Radio/Sensor/nrf24l01}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Radio/Sensor/sx1278}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Radio/TxProtocol/OpenDrone_TxProtocol}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Joystick}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Joystick/Driver/joystick}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_Transmitter_F103_FW/OpenDrone_FW_Transmitter/Switch}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/Portable/mcu_port}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Display}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Display/Driver/hd44780}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Radio}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Radio/Sensor/nrf24l01}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Radio/Sensor/sx1278}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Radio/TxProtocol/OpenDrone_TxProtocol}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Joystick}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Joystick/Driver/joystick}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/OpenDrone_FW_Transmitter_F103/OpenDrone_FW_Transmitter/Switch}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1853599625" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -185,10 +185,10 @@
 	</storageModule>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Debug">
-			<resource resourceType="PROJECT" workspacePath="/OpenDrone_Transmitter_F103_FW"/>
+			<resource resourceType="PROJECT" workspacePath="/OpenDrone_FW_Transmitter_F103"/>
 		</configuration>
 		<configuration configurationName="Release">
-			<resource resourceType="PROJECT" workspacePath="/OpenDrone_Transmitter_F103_FW"/>
+			<resource resourceType="PROJECT" workspacePath="/OpenDrone_FW_Transmitter_F103"/>
 		</configuration>
 	</storageModule>
 </cproject>

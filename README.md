@@ -1,2 +1,2 @@
-# OpenDrone_Transmitter_F103_FW
+# OpenDrone_FW_Transmitter_F103
 OpenDrone Project - Transmitter firmware with STM32F103.
